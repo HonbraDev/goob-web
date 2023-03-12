@@ -1,0 +1,19 @@
+<!-- Honbra logo leak real??? -->
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="500" height="500" rx="250" fill="#3399FF"/>
+    <rect x="127" y="148" width="75" height="75" fill="white"/>
+    <rect x="127" y="223" width="75" height="75" fill="white"/>
+    <rect x="127" y="298" width="75" height="75" fill="white"/>
+    <rect x="202" y="223" width="75" height="75" fill="white"/>
+    <rect x="277" y="148" width="75" height="75" fill="white"/>
+    <rect x="277" y="223" width="75" height="75" fill="white"/>
+    <rect x="277" y="298" width="75" height="75" fill="white"/>
+    <path d="M202 148L222 128H147L127 148H202Z" fill="white" fill-opacity="0.8"/>
+    <path d="M352 148L372 128H297L277 148H352Z" fill="white" fill-opacity="0.8"/>
+    <path d="M277 223L297 203H222L202 223H277Z" fill="white" fill-opacity="0.8"/>
+    <path d="M222 203L202 223V148L222 128L222 203Z" fill="white" fill-opacity="0.7"/>
+    <path d="M372 203L352 223V148L372 128V203Z" fill="white" fill-opacity="0.7"/>
+    <path d="M372 278L352 298V223L372 203V278Z" fill="white" fill-opacity="0.7"/>
+    <path d="M372 353L352 373V298L372 278V353Z" fill="white" fill-opacity="0.7"/>
+    <path d="M222 353L202 373V298L222 278L222 353Z" fill="white" fill-opacity="0.7"/>
+</svg>

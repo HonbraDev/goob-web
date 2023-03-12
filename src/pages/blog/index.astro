@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import JustAPage from "../../layouts/JustAPage.astro";
+import dateDMY from "../../utils/dateDMY";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<JustAPage title="Blog archive" description="idk what to write here">
+	<ul>
+		{
+			posts.map((post) => (
+				<li>
+					<time datetime={post.data.pubDate.toISOString()}>
+						{dateDMY(post.data.pubDate)}
+					</time>
+					<a class="ml-2" href={`/blog/${post.slug}`}>
+						{post.data.title}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</JustAPage>

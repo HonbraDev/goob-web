@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogPostingSchema from "../components/BlogPostingSchema.astro";
+import dateDMY from "../utils/dateDMY";
+import JustAPage from "./JustAPage.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage, heroAlt } =
+	Astro.props;
+---
+
+<JustAPage
+	title={title}
+	description={description}
+	image={heroImage}
+	noTitleHeading
+>
+	<BlogPostingSchema slot="head" {...Astro.props} />
+	<article>
+		<h1 class="mb-4">{title}</h1>
+		<div class="flex justify-between">
+			<span>{description}</span>
+			<div class="flex gap-2">
+				<span>Published {dateDMY(pubDate)}</span>
+				{
+					updatedDate && (
+						<>
+							<span>&bull;</span>
+							<span>Updated {dateDMY(updatedDate)}</span>
+						</>
+					)
+				}
+			</div>
+		</div>
+		{
+			heroImage ? (
+				<img class="" src={heroImage} alt={heroAlt} />
+			) : (
+				<hr class="mt-4 mb-0" />
+			)
+		}
+		<section>
+			<slot />
+		</section>
+	</article>
+</JustAPage>

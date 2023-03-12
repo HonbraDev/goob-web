@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { BlogPosting, WithContext } from "schema-dts";
+import { Schema } from "astro-seo-schema";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+const item: WithContext<BlogPosting> = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	name: title,
+	abstract: description,
+	author: {
+		"@type": "Person",
+		name: "Honbra",
+		url: new URL("/", Astro.url).toString(),
+	},
+	datePublished: pubDate.toISOString(),
+	dateModified: updatedDate && updatedDate.toISOString(),
+	image: heroImage,
+};
+---
+
+<Schema item={item} />

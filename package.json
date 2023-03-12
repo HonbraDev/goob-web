@@ -1,0 +1,28 @@
+{
+	"name": "goob-web",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^0.16.0",
+		"@astrojs/rss": "^2.1.0",
+		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/tailwind": "^3.0.1",
+		"astro": "^2.0.9",
+		"astro-html-minifier": "^0.4.1",
+		"astro-robots-txt": "^0.4.0",
+		"tailwindcss": "^3.2.6"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.9",
+		"astro-seo-schema": "^2.0.0",
+		"sass": "^1.58.0",
+		"schema-dts": "^1.1.0"
+	}
+}

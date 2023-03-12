@@ -1,0 +1,29 @@
+---
+import JustAPage from "../layouts/JustAPage.astro";
+---
+
+<JustAPage title="Sex gifs" description="Jesser we need to 😳">
+	<p>
+		<video
+			class="w-full rounded-md cursor-pointer"
+			id="sex-gif"
+			loop
+			autoplay
+			muted
+		>
+			<source src="/sex-gif.mp4" />
+			Sorry, your browser doesn't support the HTML5 video element. (goober)
+		</video>
+	</p>
+	<p>What did you expect? (click for sound)</p>
+	<script>
+		document.getElementById("sex-gif")!.addEventListener(
+			"click",
+			(e) => {
+				const target = e.target as HTMLVideoElement;
+				target.muted = !target.muted;
+			},
+			false
+		);
+	</script>
+</JustAPage>

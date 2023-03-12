@@ -1,0 +1,28 @@
+{
+    "github": {
+        "silent": true
+    },
+    "redirects": [
+        {
+            "source": "/img/cats/:path",
+            "destination": "/img/cta/:path",
+            "permanent": true
+        },
+        {
+            "source": "/cat-api",
+            "destination": "/blog/cat-api",
+            "permanent": true
+        }
+    ],
+    "headers": [
+        {
+            "source": "/.well-known/matrix/(.*)",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                }
+            ]
+        }
+    ]
+}
