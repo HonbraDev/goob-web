@@ -2,12 +2,15 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import HeroImage from "../components/HeroImage.astro";
 import { SITE_TITLE } from "../consts";
 
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
+	imageAlt?: string;
+	noHeroImage?: boolean;
 	noTitleHeading?: boolean;
 	noProse?: boolean;
 }
@@ -16,9 +19,12 @@ const {
 	title,
 	description,
 	image,
+	imageAlt,
+	noHeroImage = false,
 	noTitleHeading = false,
 	noProse = false,
-}: Props = Astro.props.frontmatter || Astro.props;
+}: // @ts-ignore
+Props = Astro.props.frontmatter || Astro.props;
 //                      ↑ we do a little trolling
 ---
 
@@ -42,6 +48,11 @@ const {
 			]}
 		>
 			{!noTitleHeading && <h1>{title}</h1>}
+			{
+				image && !noTitleHeading && (
+					<HeroImage src={image} alt={imageAlt} />
+				)
+			}
 			<slot />
 		</main>
 		<Footer />

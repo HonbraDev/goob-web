@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import BlogPostingSchema from "../components/BlogPostingSchema.astro";
 import dateDMY from "../utils/dateDMY";
 import JustAPage from "./JustAPage.astro";
+import HeroImage from "../components/HeroImage.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -35,7 +36,7 @@ const { title, description, pubDate, updatedDate, heroImage, heroAlt } =
 		</div>
 		{
 			heroImage ? (
-				<img class="" src={heroImage} alt={heroAlt} />
+				<HeroImage src={heroImage} alt={heroAlt} />
 			) : (
 				<hr class="mt-4 mb-0" />
 			)

@@ -1,9 +1,8 @@
 ---
-title: "The Cat API"
-description: "\"The site for all the pussies\""
-pubDate: "Mar 12 2023"
-heroImage: "/img/cta-api-gone-back.webp"
-heroAlt: "a cat sleeping on a pillow"
+layout: "../layouts/JustAPage.astro"
+title: "The cta API"
+description: "I love my cat, and so do other people apparently. That's why I built an \"API\" for pictures of my cat. (can it even be called that?)"
+image: "/img/cta-api-gone-back.webp"
 ---
 
 I love my cat, and [so do other people apparently](#testimonials). That's why I built an "API" for pictures of my cat. (can it even be called that?)

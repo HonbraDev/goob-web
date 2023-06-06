@@ -10,7 +10,12 @@
         },
         {
             "source": "/cat-api",
-            "destination": "/blog/cat-api",
+            "destination": "/cta-api",
+            "permanent": true
+        },
+        {
+            "source": "/blog/cat-api",
+            "destination": "/cta-api",
             "permanent": true
         }
     ],
