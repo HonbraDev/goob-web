@@ -18,7 +18,10 @@ const bannedAgents = [
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://honbra.com",
+  site:
+    process.env.PUBLIC_VERCEL_ENV != "production"
+      ? `https://${process.env.PUBLIC_VERCEL_URL}`
+      : "https://honbra.com",
   compressHTML: true,
   trailingSlash: "never",
   devToolbar: {
