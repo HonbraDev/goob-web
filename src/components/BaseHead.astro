@@ -2,10 +2,10 @@
 import { SITE_COLOR, SITE_TITLE } from "../consts";
 
 export interface Props {
-	title: string;
-	description?: string;
-	image?: string;
-	imageAlt?: string;
+  title: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -34,12 +34,12 @@ const { title, description, image, imageAlt } = Astro.props;
 <meta property="og:title" content={title} />
 {description && <meta property="og:description" content={description} />}
 {
-	image && (
-		<>
-			<meta property="og:image" content={new URL(image, Astro.url)} />
-			{imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-		</>
-	)
+  image && (
+    <>
+      <meta property="og:image" content={new URL(image, Astro.url)} />
+      {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    </>
+  )
 }
 
 {/* Twitter */}
@@ -54,8 +54,8 @@ const { title, description, image, imageAlt } = Astro.props;
 
 {/* RSS Feed */}
 <link
-	rel="alternate"
-	href="/rss.xml"
-	type="application/rss+xml"
-	title="RSS Feed"
+  rel="alternate"
+  href="/rss.xml"
+  type="application/rss+xml"
+  title="RSS Feed"
 />

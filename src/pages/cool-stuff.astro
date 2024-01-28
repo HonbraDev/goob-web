@@ -1,0 +1,23 @@
+---
+import Heading from "../components/Heading.astro";
+import LinkCard from "../components/LinkCard.astro";
+import LinkCardCollection from "../components/LinkCardCollection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Cool stuff"
+  description="Links to interesting people and things I know."
+>
+  <section>
+    <Heading level="h2">Projects</Heading>
+    <LinkCardCollection>
+      <LinkCard
+        title="matscan"
+        description="A Minecraft server scanner written in Rust"
+        href="https://github.com/mat-1/matscan"
+        external
+      />
+    </LinkCardCollection>
+  </section>
+</Layout>

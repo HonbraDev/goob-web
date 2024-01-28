@@ -8,18 +8,18 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 const item: WithContext<BlogPosting> = {
-	"@context": "https://schema.org",
-	"@type": "BlogPosting",
-	headline: title,
-	abstract: description,
-	author: {
-		"@type": "Person",
-		name: "Honbra",
-		url: new URL("/", Astro.url).toString(),
-	},
-	datePublished: pubDate.toISOString(),
-	dateModified: updatedDate && updatedDate.toISOString(),
-	image: heroImage,
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  abstract: description,
+  author: {
+    "@type": "Person",
+    name: "Honbra",
+    url: new URL("/", Astro.url).toString(),
+  },
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate && updatedDate.toISOString(),
+  image: heroImage,
 };
 ---
 

@@ -1,0 +1,27 @@
+---
+import LinkCard from "../components/LinkCard.astro";
+import LinkCardCollection from "../components/LinkCardCollection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Home"
+  description="Hi there! I'm Honbra, a student from Czechia, enthusiastic about technology and what it can do when (ab)used."
+  noIndexButton
+>
+  <section class="h-96"></section>
+  <LinkCardCollection>
+    <LinkCard title="Blog" description="Read my ramblings here" href="/blog" />
+    <LinkCard
+      title="Free cat pictures"
+      description="Comes with API access"
+      href="/cat-pics"
+    />
+    <LinkCard title="Links" description="Me in all the places" href="/links" />
+    <LinkCard
+      title="Cool stuff"
+      description="Interesting people and things"
+      href="/cool-stuff"
+    />
+  </LinkCardCollection>
+</Layout>

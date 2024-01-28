@@ -1,0 +1,82 @@
+---
+import Heading from "../components/Heading.astro";
+import Layout from "../layouts/Layout.astro";
+
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  imagePath: string;
+}
+
+const images: [string, { default: ImageMetadata }][] = (
+  await Promise.all(
+    Object.entries(
+      import.meta.glob<{ default: ImageMetadata }>("/public/img/cat/*.webp"),
+    ).map(
+      ([key, value], _) =>
+        new Promise((res, _rej) =>
+          value().then((value) => res([key.replace("/public", ""), value])),
+        ),
+    ) as Promise<[string, { default: ImageMetadata }]>[],
+  )
+).reverse();
+
+const responseSample = JSON.stringify(
+  {
+    base: "https://honbra.com/img/cat/",
+    images: [
+      "IMG_0040.webp",
+      "IMG_0075.webp",
+      "IMG_0094.webp",
+      "IMG_0098.webp",
+      "IMG_0217.webp",
+    ],
+  },
+  null,
+  2,
+);
+---
+
+<Layout
+  title="Cat pics"
+  description="Free cat pictures. Comes with API access!"
+  wide
+>
+  <section>
+    <ul class="grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-md:grid-cols-2">
+      {
+        images.map(([link, image]) => (
+          <li>
+            <a
+              class="block cursor-zoom-in group overflow-hidden aspect-square bg-slate-700 rounded-lg shadow-md group-hover:shadow-lg group-focus-visible:shadow-lg"
+              href={link}
+              target="_blank"
+            >
+              <Image
+                class="w-full h-full object-cover group-hover:scale-110 group-focus-visible:scale-110 transition-transform"
+                src={image.default}
+                quality="mid"
+                width={512}
+                alt=""
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section class="mx-auto max-w-4xl w-full">
+    <Heading level="h2">API access</Heading>
+    <div class="flex flex-col gap-4 text-lg">
+      <div
+        class="rounded-xl border border-slate-700 px-4 py-2 flex gap-4 items-center overflow-x-auto"
+      >
+        <span class="font-bold">GET</span>
+        <span class="font-mono">https://honbra.com/img/cat/listing.json</span>
+      </div>
+      <pre
+        class="rounded-xl border border-slate-700 px-4 py-2 overflow-x-auto">{responseSample}</pre>
+    </div>
+  </section>
+</Layout>

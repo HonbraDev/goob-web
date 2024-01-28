@@ -1,0 +1,59 @@
+---
+import "@fontsource-variable/inter";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: { text: string; href: string }[];
+  image?: string;
+  imageAlt?: string;
+  noHeroImage?: boolean;
+  noTitleHeading?: boolean;
+  noIndexButton?: boolean;
+  wide?: boolean;
+}
+
+const {
+  title,
+  description,
+  breadcrumbs,
+  image,
+  imageAlt,
+  noHeroImage = false,
+  noTitleHeading = false,
+  noIndexButton = false,
+  wide = false,
+}: // @ts-ignore
+Props = Astro.props.frontmatter || Astro.props;
+//                      ↑ we do a little trolling
+---
+
+<!--
+	hi! you need a web browser to display this site
+	you do have one, right?
+-->
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+    <slot name="head" />
+  </head>
+  <body
+    class={`flex flex-col gap-8 px-4 py-16 mx-auto ${
+      wide ? "max-w-6xl" : "max-w-4xl"
+    } bg-slate-900 text-neutral-100 max-lg:py-8`}
+  >
+    <Header
+      title={title}
+      breadcrumbs={breadcrumbs}
+      noTitleHeading={noTitleHeading}
+      noIndexButton={noIndexButton}
+    />
+    <main class="flex flex-col gap-8">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

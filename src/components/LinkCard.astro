@@ -1,0 +1,28 @@
+---
+import { ArrowRight, ExternalLink } from "lucide-astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  href: string;
+  external?: boolean;
+}
+
+const { title, description, href, external } = Astro.props;
+
+const Icon = external ? ExternalLink : ArrowRight;
+---
+
+<li>
+  <a
+    class="flex relative flex-col gap-1 p-4 rounded-xl border cursor-pointer border-slate-700 group hover:border-slate-500 focus-within:border-slate-500"
+    href={href}
+    target={external ? "_blank" : undefined}
+    rel="noopener"
+  >
+    <h3 class="text-xl font-bold"><slot name="title">{title}</slot></h3>
+    <div class="text-neutral-300"><slot>{description}</slot></div>
+    {/* we deal with long text later */}
+    <Icon class="absolute right-4 bottom-4 text-neutral-400" />
+  </a>
+</li>

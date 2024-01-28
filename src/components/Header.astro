@@ -1,19 +1,46 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
+
+interface Props {
+  title: string;
+  noTitleHeading?: boolean;
+  noIndexButton?: boolean;
+  breadcrumbs?: {
+    text: string;
+    href: string;
+  }[];
+}
+
+const {
+  title,
+  noTitleHeading = false,
+  noIndexButton = false,
+  breadcrumbs = [],
+} = Astro.props;
+
+const actualBreadcrumbs = [
+  {
+    text: SITE_TITLE,
+    href: "/",
+  },
+  ...breadcrumbs,
+];
 ---
 
-<header class="flex py-2 gap-6 items-center">
-	<h2 class="text-2xl font-bold">
-		<a href="/" class="hover:underline focus:underline focus:outline-none"
-			>{SITE_TITLE}</a
-		>
-	</h2>
-
-	{/* If it overflows, blame the user for having a screen that's too small */}
-	<nav class="flex gap-4 overflow-x-auto w-full">
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/links">Links</HeaderLink>
-	</nav>
+<header class="max-w-4xl mx-auto w-full">
+  {
+    !noIndexButton && (
+      <div class="flex gap-2 mb-1 text-lg text-neutral-400">
+        {actualBreadcrumbs.map(({ text, href }) => (
+          <>
+            <a href={href} class="hover:underline focus-visible:underline">
+              {text}
+            </a>
+            <span>/</span>
+          </>
+        ))}
+      </div>
+    )
+  }
+  {!noTitleHeading && <h1 class="text-5xl font-extrabold">{title}</h1>}
 </header>

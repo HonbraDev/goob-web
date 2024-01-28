@@ -1,48 +1,47 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogPostingSchema from "../components/BlogPostingSchema.astro";
-import dateDMY from "../utils/dateDMY";
-import JustAPage from "./JustAPage.astro";
 import HeroImage from "../components/HeroImage.astro";
+import dateDMY from "../utils/dateDMY";
+import Layout from "./Layout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage, heroAlt } =
-	Astro.props;
+  Astro.props;
 ---
 
-<JustAPage
-	title={title}
-	description={description}
-	image={heroImage}
-	noTitleHeading
+<Layout
+  title={title}
+  description={description}
+  breadcrumbs={[{ text: "Blog", href: "/blog" }]}
+  image={heroImage}
 >
-	<BlogPostingSchema slot="head" {...Astro.props} />
-	<article>
-		<h1 class="mb-4">{title}</h1>
-		<div class="flex justify-between">
-			<span>{description}</span>
-			<div class="flex gap-2">
-				<span>Published {dateDMY(pubDate)}</span>
-				{
-					updatedDate && (
-						<>
-							<span>&bull;</span>
-							<span>Updated {dateDMY(updatedDate)}</span>
-						</>
-					)
-				}
-			</div>
-		</div>
-		{
-			heroImage ? (
-				<HeroImage src={heroImage} alt={heroAlt} />
-			) : (
-				<hr class="mt-4 mb-0" />
-			)
-		}
-		<section>
-			<slot />
-		</section>
-	</article>
-</JustAPage>
+  <BlogPostingSchema slot="head" {...Astro.props} />
+  <article>
+    <div class="flex justify-between mb-4">
+      <span>{description}</span>
+      <div class="flex gap-2">
+        <span>Published {dateDMY(pubDate)}</span>
+        {
+          updatedDate && (
+            <>
+              <span>&bull;</span>
+              <span>Updated {dateDMY(updatedDate)}</span>
+            </>
+          )
+        }
+      </div>
+    </div>
+    {
+      heroImage ? (
+        <HeroImage src={heroImage} alt={heroAlt} />
+      ) : (
+        <hr class="mt-4 mb-0" />
+      )
+    }
+    <section id="article-content" class="prose text-white">
+      <slot />
+    </section>
+  </article>
+</Layout>

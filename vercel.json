@@ -1,33 +1,43 @@
 {
-    "github": {
-        "silent": true
+  "github": {
+    "silent": true
+  },
+  "redirects": [
+    {
+      "source": "/img/cats/:path",
+      "destination": "/img/cat/:path",
+      "permanent": true
     },
-    "redirects": [
+    {
+      "source": "/img/cta/:path",
+      "destination": "/img/cat/:path",
+      "permanent": true
+    },
+    {
+      "source": "/cat-api",
+      "destination": "/cat-pics",
+      "permanent": true
+    },
+    {
+      "source": "/cta-api",
+      "destination": "/cat-pics",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cat-api",
+      "destination": "/cat-pics",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/matrix/(.*)",
+      "headers": [
         {
-            "source": "/img/cats/:path",
-            "destination": "/img/cta/:path",
-            "permanent": true
-        },
-        {
-            "source": "/cat-api",
-            "destination": "/cta-api",
-            "permanent": true
-        },
-        {
-            "source": "/blog/cat-api",
-            "destination": "/cta-api",
-            "permanent": true
+          "key": "Content-Type",
+          "value": "application/json"
         }
-    ],
-    "headers": [
-        {
-            "source": "/.well-known/matrix/(.*)",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                }
-            ]
-        }
-    ]
+      ]
+    }
+  ]
 }
